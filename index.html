@@ -1,1 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arapoti Ecoturismo - Natureza e Aventura</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
+    <header>
+        <div class="logo">Arapoti Ecoturismo</div>
+        <nav id="menu">
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#destaques">Destaques</a></li>
+                <li><a href="#aventura">Aventura</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+        <button class="menu-toggle" aria-label="Abrir Menu">☰</button>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <h1>Descubra a Natureza Selvagem de Arapoti 🌳</h1>
+            <p>Seus campos floridos, rios cristalinos e cachoeiras esperam por você!</p>
+            <a href="#destaques" class="btn">Explore Nossos Passeios</a>
+        </section>
+
+        <section id="destaques" class="section-padding">
+            <h2>Destaques Naturais</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-image">[Imagem da Cachoeira do Capão Bonito]</div>
+                    <h3>Cachoeira do Capão Bonito</h3>
+                    <p>Queda d'água impressionante em meio à mata nativa, perfeita para banho e contemplação.</p>
+                </div>
+                <div class="card">
+                    <div class="card-image">[Imagem de um trecho do Rio Jaguariaíva]</div>
+                    <h3>Rio Jaguariaíva</h3>
+                    <p>Ideal para canoagem e observação de fauna local. Um corredor de vida na região.</p>
+                </div>
+                <div class="card">
+                    <div class="card-image">[Imagem dos Campos Gerais de Arapoti]</div>
+                    <h3>Campos Gerais</h3>
+                    <p>Vistas panorâmicas e trilhas leves, mostrando a flora e fauna nativas do Paraná.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="aventura" class="section-padding bg-light">
+            <h2>Aventura e Emoção</h2>
+            <ul>
+                <li>**Trilhas Ecológicas:** Diversos níveis de dificuldade, do leve ao desafiador.</li>
+                <li>**Mountain Bike:** Rotas rurais com paisagens espetaculares.</li>
+                <li>**Observação de Pássaros (Birdwatching):** Arapoti é lar de diversas espécies endêmicas.</li>
+            </ul>
+        </section>
+
+        <section id="contato" class="section-padding">
+            <h2>Planeje Sua Viagem</h2>
+            <form id="contato-form">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="mensagem">Interesse (Ex: Trilha, Hospedagem):</label>
+                <textarea id="mensagem" name="mensagem" required></textarea>
+
+                <button type="submit" class="btn">Enviar Contato</button>
+            </form>
+            <p class="telefone">Ou ligue: (43) 9XXXX-XXXX</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Arapoti Ecoturismo. Descubra o Paraná.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. FUNCIONALIDADE DO MENU RESPONSIVO
+    const menuBtn = document.getElementById('menu-btn');
+    const navbar = document.querySelector('.navbar');
+
+    if (menuBtn && navbar) {
+        // Alterna a classe 'active' na navbar ao clicar no botão
+        menuBtn.onclick = () => {
+            navbar.classList.toggle('active');
+            // Altera o ícone do menu (fa-bars para fa-times e vice-versa)
+            menuBtn.classList.toggle('fa-bars');
+            menuBtn.classList.toggle('fa-times');
+        };
+
+        // Fecha o menu ao clicar em um link
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.onclick = () => {
+                navbar.classList.remove('active');
+                menuBtn.classList.remove('fa-times');
+                menuBtn.classList.add('fa-bars');
+            };
+        });
+    }
+
+    // 2. FUNCIONALIDADE DO BOTÃO EXPLORAR (Scroll Suave)
+    const exploreBtn = document.getElementById('explore-btn');
+    const destinosSection = document.getElementById('destinos');
+
+    if (exploreBtn && destinosSection) {
+        exploreBtn.onclick = () => {
+            destinosSection.scrollIntoView({ behavior: 'smooth' });
+        };
+    }
+
+    // 3. TRATAMENTO SIMPLES DO FORMULÁRIO DE CONTATO
+    const contactForm = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+
+    if (contactForm && formMessage) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Impede o recarregamento da página
+
+            // Simula o envio
+            formMessage.textContent = 'Mensagem enviada com sucesso! Em breve entraremos em contato.';
+            formMessage.style.backgroundColor = '#4CAF50'; // Verde de sucesso
+            formMessage.classList.remove('hidden');
+            contactForm.reset(); // Limpa o formulário
+
+            // Oculta a mensagem após 5 segundos
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        });
+    }
+});

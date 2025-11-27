@@ -1,1 +1,257 @@
+/* Importação da Fonte (se já não estiver no HTML) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
+:root {
+    --primary-color: #008000; /* Verde Floresta */
+    --secondary-color: #388e3c; /* Verde mais claro */
+    --text-color: #333;
+    --light-bg: #f5f5f5;
+    --white: #ffffff;
+    --font-family: 'Poppins', sans-serif;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* --- HEADER e NAVEGAÇÃO --- */
+header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+}
+
+.menu-toggle {
+    display: none; /* Esconde o botão em telas grandes */
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.8em;
+    cursor: pointer;
+}
+
+/* --- ESTILOS GERAIS --- */
+.section-padding {
+    padding: 80px 5%;
+    text-align: center;
+}
+
+.bg-light {
+    background-color: var(--light-bg);
+}
+
+h1 { font-size: 3em; margin-bottom: 0.5em; }
+h2 { font-size: 2em; margin-bottom: 1.5em; color: var(--primary-color); }
+h3 { font-size: 1.4em; margin-top: 10px; }
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 30px;
+    margin-top: 20px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* --- SEÇÃO HERO --- */
+.hero {
+    background: url('caminho/para/imagem-fundo-arapoti.jpg') no-repeat center center/cover;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* --- CARDS (DESTAQUES) --- */
+.cards-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.card {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    min-width: 280px;
+    padding: 20px;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-image {
+    height: 150px;
+    background-color: var(--light-bg); /* Placeholder para a imagem */
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em;
+    color: var(--text-color);
+}
+
+/* --- SEÇÃO AVENTURA --- */
+#aventura ul {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#aventura li {
+    background-color: var(--white);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-left: 5px solid var(--secondary-color);
+    border-radius: 4px;
+}
+
+/* --- FORMULÁRIO (CONTATO) --- */
+#contato-form {
+    max-width: 500px;
+    margin: 0 auto 20px;
+    text-align: left;
+    background-color: var(--light-bg);
+    padding: 30px;
+    border-radius: 8px;
+}
+
+#contato-form label, #contato-form input, #contato-form textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#contato-form input, #contato-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#contato-form textarea {
+    resize: vertical;
+}
+
+.telefone {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: var(--text-color);
+    color: var(--white);
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* --- MEDIA QUERIES (Responsividade) --- */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    nav {
+        /* Esconde o menu por padrão */
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Abaixo do header */
+        left: 0;
+        background-color: rgba(0, 128, 0, 0.95); /* Fundo semi-transparente */
+        text-align: center;
+        padding-bottom: 10px;
+    }
+
+    nav.active {
+        display: flex; /* Mostra o menu quando ativo (via JS) */
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li a {
+        padding: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .menu-toggle {
+        display: block; /* Mostra o botão do menu */
+    }
+
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .cards-container {
+        justify-content: center;
+    }
+
+    .section-padding {
+        padding: 50px 20px;
+    }
+}
